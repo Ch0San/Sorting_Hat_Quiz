@@ -15,16 +15,18 @@
 
 ### 1. 로컬에서 실행
 1. 이 레포를 클론하거나 ZIP으로 내려받습니다.
-2. 폴더 구조는 예를 들어 아래와 같습니다:.
+2. 폴더 구조는 예를 들어 아래와 같습니다:
+   ```text
    Sorting_Hat_Quiz/
-    ├─ index.html      # 메인 페이지 (질문/결과 UI)
-    ├─ index.js        # 로직 (진행/채점/결과 표시)
-    ├─ style.css       # 스타일 (다크+골드 테마)
-    └─ img/            # 각 기숙사 문장 이미지
-     ├─ gryffindor.webp
-     ├─ slytherin.webp
-     ├─ ravenclaw.webp
-     └─ hufflepuff.webp
+   ├─ index.html      # 메인 페이지 (질문/결과 UI)
+   ├─ index.js        # 로직 (진행/채점/결과 표시)
+   ├─ style.css       # 스타일 (다크+골드 테마)
+   └─ img/            # 각 기숙사 문장 이미지
+      ├─ gryffindor.webp
+      ├─ slytherin.webp
+      ├─ ravenclaw.webp
+      └─ hufflepuff.webp
+
 3. `index.html`을 브라우저로 그냥 열면 바로 동작합니다.  
 (별도 서버나 빌드 과정 필요 없음)
 
