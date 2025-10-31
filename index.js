@@ -30,16 +30,12 @@ const HOUSE_DESC = {
         "사람을 버리지 않는 안정형 탱커 타입.",
 };
 
-// 각 기숙사 이미지 (너가 준 URL들)
+// 각 기숙사 이미지 경로
 const HOUSE_IMG = {
-    "그리핀도르":
-        "https://i.namu.wiki/i/yQIGIo6LCrIpr3ZFcRE81ts2hEYZu83ebu_oHlicMsY7HaEsP2d5RApwga5uHqtM9U2k0FdhRVlFu6Ow2_m_Lb8aNUpuRYeRo-khZvWAa8oMML45ImTP8haexT74hXQBb3oRFUpwHfWgqJU2enfQ2A.webp",
-    "후플푸프":
-        "https://i.namu.wiki/i/U4JlUxtZzwAfWp4XbGwO4rXzQ95gCJY_6nzJQd92MG6AbWnMWsLNC4MasRMAQBfXwDcYc-bVcvbQIBU8e3Z2UMQAKvuP8MRgG2p15qYR3zllO-D_O0SZVYH4zGjaBSxz1KVGTy6rhNCEMVr6QSL5kg.webp",
-    "래번클로":
-        "https://i.namu.wiki/i/S1ntMJ4wN_2rnPr8M9EvGQTkMDsJgwMEB1UAYyn3bs_d04cf2RSkX-SvJIXEQQcwyF1ghofkzDmg_N0E5LSNFNR4SlA6Wck0lROWIRhDab3GMM46quFdRhr5gz2g-y2ZHE-2vjDI4HX3MWAghZo6aA.webp",
-    "슬리데린":
-        "https://i.namu.wiki/i/-0sixibPwej8PKGLvmvbzOfWt2-QDrWsfG0ZBXlfIZJVfY_P0dD5hTmBf9YKzESVfWdSYWLnNabr1PTB5ydRSPjsshOzqUoVKnFK73IBRpIJ8NJXncIyu4oRUlZNxRmNr_wN2IPwAONJn5yS_OHf4g.webp",
+    "그리핀도르": "./img/gryffindor.webp",
+    "슬리데린": "./img/slytherin.webp",
+    "래번클로": "./img/ravenclaw.webp",
+    "후플푸프": "./img/hufflepuff.webp",
 };
 
 // =========================
