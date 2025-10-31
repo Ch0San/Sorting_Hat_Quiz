@@ -1,6 +1,12 @@
-// A=그리핀도르, B=슬리데린, C=래번클로, D=후플푸프
+// =========================
+// 설정값 / 상수
+// =========================
 
+// 전체 문항 수
 const QUESTIONS = 20;
+
+// 답안 -> 기숙사 매핑용 키
+// A=그리핀도르, B=슬리데린, C=래번클로, D=후플푸프
 const MAPPING = {
     A: "그리핀도르",
     B: "슬리데린",
@@ -8,6 +14,7 @@ const MAPPING = {
     D: "후플푸프",
 };
 
+// 각 기숙사 설명
 const HOUSE_DESC = {
     그리핀도르:
         "용기, 행동력, 정의감. 위험해도 내 사람은 내가 지킨다.\n" +
@@ -23,12 +30,29 @@ const HOUSE_DESC = {
         "사람을 버리지 않는 안정형 탱커 타입.",
 };
 
-// DOM refs
+// 각 기숙사 이미지 (너가 준 URL들)
+const HOUSE_IMG = {
+    "그리핀도르":
+        "https://i.namu.wiki/i/yQIGIo6LCrIpr3ZFcRE81ts2hEYZu83ebu_oHlicMsY7HaEsP2d5RApwga5uHqtM9U2k0FdhRVlFu6Ow2_m_Lb8aNUpuRYeRo-khZvWAa8oMML45ImTP8haexT74hXQBb3oRFUpwHfWgqJU2enfQ2A.webp",
+    "후플푸프":
+        "https://i.namu.wiki/i/U4JlUxtZzwAfWp4XbGwO4rXzQ95gCJY_6nzJQd92MG6AbWnMWsLNC4MasRMAQBfXwDcYc-bVcvbQIBU8e3Z2UMQAKvuP8MRgG2p15qYR3zllO-D_O0SZVYH4zGjaBSxz1KVGTy6rhNCEMVr6QSL5kg.webp",
+    "래번클로":
+        "https://i.namu.wiki/i/S1ntMJ4wN_2rnPr8M9EvGQTkMDsJgwMEB1UAYyn3bs_d04cf2RSkX-SvJIXEQQcwyF1ghofkzDmg_N0E5LSNFNR4SlA6Wck0lROWIRhDab3GMM46quFdRhr5gz2g-y2ZHE-2vjDI4HX3MWAghZo6aA.webp",
+    "슬리데린":
+        "https://i.namu.wiki/i/-0sixibPwej8PKGLvmvbzOfWt2-QDrWsfG0ZBXlfIZJVfY_P0dD5hTmBf9YKzESVfWdSYWLnNabr1PTB5ydRSPjsshOzqUoVKnFK73IBRpIJ8NJXncIyu4oRUlZNxRmNr_wN2IPwAONJn5yS_OHf4g.webp",
+};
+
+// =========================
+// DOM 요소 가져오기
+// =========================
+
 const warningBox = document.getElementById("warningBox");
+
 const resultCard = document.getElementById("resultCard");
 const resultHouse = document.getElementById("resultHouse");
 const resultScores = document.getElementById("resultScores");
 const resultDesc = document.getElementById("resultDesc");
+const resultImg = document.getElementById("resultImg");
 
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
@@ -41,22 +65,26 @@ const progressBar = document.getElementById("progressBar");
 
 progressTotal.textContent = QUESTIONS.toString();
 
-// 모든 question-block 수집
+// 모든 질문 블록들
 const questionBlocks = Array.from(
     document.querySelectorAll(".question-block")
 );
 
-// 현재 몇 번째 문항을 보고 있는지 (1부터 시작)
+// 지금 보고 있는 문제 번호 (1부터 시작)
 let currentStep = 1;
 
-// step에 해당하는 질문 DOM 찾기
+// =========================
+// 유틸 / 헬퍼 함수
+// =========================
+
+// 현재 step 번호에 해당하는 question-block DOM 찾아오기
 function getBlock(step) {
-    return questionBlocks.find(
-        (blk) => parseInt(blk.getAttribute("data-step"), 10) === step
-    );
+    return questionBlocks.find((blk) => {
+        return parseInt(blk.getAttribute("data-step"), 10) === step;
+    });
 }
 
-// 현재 step에서 라디오 체크됐는지
+// 현재 step의 답이 체크되어 있는지 가져오기
 function getAnswer(qName) {
     const checked = document.querySelector(
         'input[name="' + qName + '"]:checked'
@@ -64,18 +92,21 @@ function getAnswer(qName) {
     return checked ? checked.value : null;
 }
 
-// 전체 점수 tally (모든 문항 답이 있어야 함)
+// 모든 문항의 점수(A/B/C/D 카운트) 집계
+// 전 문항 다 안 골랐으면 null 리턴
 function tallyScores() {
     const score = { A: 0, B: 0, C: 0, D: 0 };
     for (let i = 1; i <= QUESTIONS; i++) {
         const ans = getAnswer("q" + i);
-        if (!ans) return null;
+        if (!ans) {
+            return null; // 아직 안 고른 문제가 있다
+        }
         score[ans] += 1;
     }
     return score;
 }
 
-// 최고 득표 기숙사 선택
+// 최다 득표 하우스를 결정
 function pickHouse(score) {
     let bestKey = "A";
     let bestVal = -1;
@@ -85,15 +116,20 @@ function pickHouse(score) {
             bestKey = k;
         }
     }
-    return { houseKey: bestKey, houseName: MAPPING[bestKey] };
+    return {
+        houseKey: bestKey,
+        houseName: MAPPING[bestKey],
+    };
 }
 
-// 결과 표시
+// =========================
+// 결과 보여주기
+// =========================
 function showResult() {
     const score = tallyScores();
 
     if (!score) {
-        // 아직 안 고른 문항이 있으면 경고
+        // 아직 안 고른 문항이 하나라도 있으면 경고만 띄우고 결과는 안 보여줌
         warningBox.style.display = "block";
         resultCard.style.display = "none";
         return;
@@ -103,6 +139,7 @@ function showResult() {
 
     const { houseName } = pickHouse(score);
 
+    // 점수 라인 텍스트 구성
     const line =
         "그리핀도르(A): " +
         score.A +
@@ -117,19 +154,37 @@ function showResult() {
         score.D +
         "점";
 
+    // 텍스트 결과 세팅
     resultHouse.textContent = "당신의 기숙사: " + houseName + " 🪄";
     resultScores.textContent = line;
     resultDesc.textContent = HOUSE_DESC[houseName] || "";
 
+    // 이미지 세팅
+    const imgUrl = HOUSE_IMG[houseName] || "";
+    if (imgUrl) {
+        resultImg.src = imgUrl;
+        resultImg.alt = houseName + " 문장";
+        resultImg.style.display = "block";
+    } else {
+        // 혹시라도 매칭 실패 시 이미지 감춤
+        resultImg.removeAttribute("src");
+        resultImg.style.display = "none";
+    }
+
+    // 카드 보여주기
     resultCard.style.display = "block";
 
-    // 결과 카드로 스크롤
+    // 결과 카드로 스크롤 다운
     resultCard.scrollIntoView({ behavior: "smooth", block: "center" });
 }
 
-// 현재 step UI 반영
+// =========================
+// 스텝 전환 / UI 업데이트
+// =========================
+
+// 현재 step만 보이게 하고 나머지는 숨김
 function renderStep() {
-    // 블록 show/hide
+    // 질문 show/hide
     questionBlocks.forEach((blk) => {
         const step = parseInt(blk.getAttribute("data-step"), 10);
         if (step === currentStep) {
@@ -139,7 +194,7 @@ function renderStep() {
         }
     });
 
-    // 진행 텍스트/번호 업데이트
+    // 진행도 텍스트, 번호
     const currentBlock = getBlock(currentStep);
     const qLabelEl = currentBlock.querySelector(".question-label");
     const qLabelText = qLabelEl ? qLabelEl.textContent.trim() : "";
@@ -147,65 +202,70 @@ function renderStep() {
     progressNow.textContent = currentStep.toString();
     progressText.textContent = qLabelText;
 
-    // 프로그레스 바 (%)
+    // 진행 바 (%)
     const pct = (currentStep / QUESTIONS) * 100;
     progressBar.style.width = pct + "%";
 
-    // 이전/다음/결과 버튼 상태
+    // 이전 버튼 상태
     if (currentStep === 1) {
         prevBtn.disabled = true;
     } else {
         prevBtn.disabled = false;
     }
 
+    // 다음 / 결과 버튼 토글
     if (currentStep === QUESTIONS) {
-        nextBtn.classList.add("hidden");
-        calcBtn.classList.remove("hidden");
+        nextBtn.classList.add("hidden"); // 마지막 문제면 "다음" 숨기기
+        calcBtn.classList.remove("hidden"); // "결과 보기" 보여주기
     } else {
         nextBtn.classList.remove("hidden");
         calcBtn.classList.add("hidden");
     }
 
-    // 경고 숨김 (다음 문제 넘어오면 경고 리셋)
+    // 경고창은 스텝 렌더할 때 숨김
     warningBox.style.display = "none";
 
-    // 결과 카드 아직은 숨기자 (사용자가 뒤로 가도 이전 결과 안 남아있게 할지? -> 남겨도 됨.
-    // 여기선 남겨둘게. 그대로 두는 게 사용자 입장 친절.)
+    // (결과카드는 그대로 둬서 사용자가 뒤로 가도 볼 수 있게 함)
 }
 
-// 현재 step에서 답 체크 여부
+// 현재 step이 답변되었는지 확인
 function answeredCurrentStep() {
     const ans = getAnswer("q" + currentStep);
     return !!ans;
 }
 
-// 다음으로 이동
+// 다음 step으로 이동
 function goNext() {
+    // 현재 문제 체크 안 했으면 경고 띄우고 이동 안 함
     if (!answeredCurrentStep()) {
-        // 아직 안 골랐으면 경고
         warningBox.style.display = "block";
         return;
     }
+
     if (currentStep < QUESTIONS) {
         currentStep += 1;
         renderStep();
-        // 새 질문 카드로 스크롤
+
         const blk = getBlock(currentStep);
         blk.scrollIntoView({ behavior: "smooth", block: "start" });
     }
 }
 
-// 이전으로 이동
+// 이전 step으로 이동
 function goPrev() {
     if (currentStep > 1) {
         currentStep -= 1;
         renderStep();
+
         const blk = getBlock(currentStep);
         blk.scrollIntoView({ behavior: "smooth", block: "start" });
     }
 }
 
+// =========================
 // 이벤트 바인딩
+// =========================
+
 prevBtn.addEventListener("click", goPrev);
 nextBtn.addEventListener("click", goNext);
 calcBtn.addEventListener("click", showResult);
