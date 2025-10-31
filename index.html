@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>호그와트 기숙사 배정 테스트</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+  <main>
+    <header class="app-header">
+      <div class="title heading-serif">
+        <div>호그와트 기숙사 배정 테스트</div>
+        <div class="subtitle body-text">
+          총 20문항. 질문마다 가장 너다운 답 하나만 고르면 돼.<br />
+          마지막에서 기숙사가 결정돼요. 🪄
+        </div>
+      </div>
+    </header>
+
+    <!-- 진행 상황 / 현재 번호 -->
+    <section class="card progress-card">
+      <div class="progress-top">
+        <div class="heading-serif progress-label">
+          <span id="progressNow">1</span> / <span id="progressTotal">20</span>
+        </div>
+        <div class="body-dim" id="progressText">Q1. 친구가 억울하게 누명 썼다. 너는?</div>
+
+        <div class="progress-bar-outer">
+          <div class="progress-bar-inner" id="progressBar"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 질문 영역 -->
+    <section class="card" id="questions">
+
+      <!-- Q1 -->
+      <div class="question-block" data-step="1">
+        <div class="question-header">
+          <div class="question-label heading-serif">Q1. 친구가 억울하게 누명 썼다. 너는?</div>
+        </div>
+        <div class="options" data-question="q1">
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q1" value="A" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">A.</div>
+              <div class="option-text body-text">“내가 증언할게. 같이 싸우자.” 하고 바로 옹호한다.</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q1" value="B" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">B.</div>
+              <div class="option-text body-text">조용히 증거를 모으고 상황을 뒤집을 전략부터 짠다.</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q1" value="C" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">C.</div>
+              <div class="option-text body-text">사실관계를 정리해 논리적으로 선생님을 설득한다.</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q1" value="D" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">D.</div>
+              <div class="option-text body-text">친구 옆을 안 떠나고 멘탈부터 붙잡아 준다.</div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Q2 -->
+      <div class="question-block hidden" data-step="2">
+        <div class="question-header">
+          <div class="question-label heading-serif">Q2. 모두가 커닝하자고 한다면?</div>
+        </div>
+        <div class="options" data-question="q2">
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q2" value="A" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">A.</div>
+              <div class="option-text body-text">양심에 어긋나면 안 해. 실력으로 가.</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q2" value="B" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">B.</div>
+              <div class="option-text body-text">리스크 대비 이득 크면 고려해볼 수도… 들키지만 않으면?</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q2" value="C" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">C.</div>
+              <div class="option-text body-text">그 시간에 그냥 더 공부하지. 비효율적이야.</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q2" value="D" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">D.</div>
+              <div class="option-text body-text">다 같이 문제 생기는 건 싫어. “하지 말자”라고 설득한다.</div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Q3 -->
+      <div class="question-block hidden" data-step="3">
+        <div class="question-header">
+          <div class="question-label heading-serif">Q3. 제일 듣고 싶은 칭찬은?</div>
+        </div>
+        <div class="options" data-question="q3">
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q3" value="A" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">A.</div>
+              <div class="option-text body-text">“넌 진짜 용감해. 의리 있어.”</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q3" value="B" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">B.</div>
+              <div class="option-text body-text">“넌 성공할 사람이야. 꼭 위에 올라갈 거야.”</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q3" value="C" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">C.</div>
+              <div class="option-text body-text">“너 머리 진짜 좋다. 생각이 다르다.”</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q3" value="D" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">D.</div>
+              <div class="option-text body-text">“너 덕분에 다들 편해졌어. 믿을 수 있어.”</div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Q4 -->
+      <div class="question-block hidden" data-step="4">
+        <div class="question-header">
+          <div class="question-label heading-serif">Q4. 정체불명의 비밀 통로를 발견했다면?</div>
+        </div>
+        <div class="options" data-question="q4">
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q4" value="A" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">A.</div>
+              <div class="option-text body-text">들어가 본다. 모험 없으면 인생 심심해.</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q4" value="B" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">B.</div>
+              <div class="option-text body-text">내가 독점적으로 쓰면 어떤 이득이 있을지 먼저 생각.</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q4" value="C" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">C.</div>
+              <div class="option-text body-text">지도를 만들고 구조/위험요소부터 분석.</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q4" value="D" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">D.</div>
+              <div class="option-text body-text">다른 애들 다치면 안 되니까 알릴지 고민.</div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Q5 -->
+      <div class="question-block hidden" data-step="5">
+        <div class="question-header">
+          <div class="question-label heading-serif">Q5. 더 중요한 건?</div>
+        </div>
+        <div class="options" data-question="q5">
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q5" value="A" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">A.</div>
+              <div class="option-text body-text">옳은 일을 하는 것</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q5" value="B" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">B.</div>
+              <div class="option-text body-text">원하는 걸 얻는 것</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q5" value="C" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">C.</div>
+              <div class="option-text body-text">진실을 아는 것</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q5" value="D" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">D.</div>
+              <div class="option-text body-text">모두가 잘 지내는 것</div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Q6 -->
+      <div class="question-block hidden" data-step="6">
+        <div class="question-header">
+          <div class="question-label heading-serif">Q6. 단체 과제에서 맡고 싶은 역할은?</div>
+        </div>
+        <div class="options" data-question="q6">
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q6" value="A" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">A.</div>
+              <div class="option-text body-text">앞에서 방향 잡는 리더</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q6" value="B" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">B.</div>
+              <div class="option-text body-text">뒤에서 전체 판을 설계하는 전략가</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q6" value="C" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">C.</div>
+              <div class="option-text body-text">자료 퀄리티 올리는 브레인</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q6" value="D" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">D.</div>
+              <div class="option-text body-text">모두 마감 지키게 챙기는 케어 담당</div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Q7 -->
+      <div class="question-block hidden" data-step="7">
+        <div class="question-header">
+          <div class="question-label heading-serif">Q7. 날 무시하는 사람이 있다면?</div>
+        </div>
+        <div class="options" data-question="q7">
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q7" value="A" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">A.</div>
+              <div class="option-text body-text">“그만해.”라고 직접 말한다.</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q7" value="B" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">B.</div>
+              <div class="option-text body-text">언젠가 능력으로 조용히 굴복시키게 만든다.</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q7" value="C" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">C.</div>
+              <div class="option-text body-text">왜 저렇게 행동하는지 감정 배제하고 분석한다.</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q7" value="D" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">D.</div>
+              <div class="option-text body-text">싸움 키우기 싫어서 그냥 넘어간다.</div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Q8 -->
+      <div class="question-block hidden" data-step="8">
+        <div class="question-header">
+          <div class="question-label heading-serif">Q8. 자유시간이 생겼다. 뭐 할래?</div>
+        </div>
+        <div class="options" data-question="q8">
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q8" value="A" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">A.</div>
+              <div class="option-text body-text">친구랑 스릴 있는 경험 찾으러 나감</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q8" value="B" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">B.</div>
+              <div class="option-text body-text">나만의 프로젝트(돈 될만한 아이템 등)</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q8" value="C" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">C.</div>
+              <div class="option-text body-text">읽고 싶던 책/실험/기록 정리</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q8" value="D" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">D.</div>
+              <div class="option-text body-text">간식 나눠 먹으며 수다+힐링</div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Q9 -->
+      <div class="question-block hidden" data-step="9">
+        <div class="question-header">
+          <div class="question-label heading-serif">Q9. 규칙은 너한테 뭐야?</div>
+        </div>
+        <div class="options" data-question="q9">
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q9" value="A" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">A.</div>
+              <div class="option-text body-text">부당하면 깨도 돼.</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q9" value="B" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">B.</div>
+              <div class="option-text body-text">잘 쓰면 이득 주는 무기.</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q9" value="C" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">C.</div>
+              <div class="option-text body-text">시스템을 이해하기 위한 분석 대상.</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q9" value="D" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">D.</div>
+              <div class="option-text body-text">모두 편하게 살게 해주는 최소선.</div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Q10 -->
+      <div class="question-block hidden" data-step="10">
+        <div class="question-header">
+          <div class="question-label heading-serif">Q10. 너의 약점에 더 가까운 건?</div>
+        </div>
+        <div class="options" data-question="q10">
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q10" value="A" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">A.</div>
+              <div class="option-text body-text">안 싸워도 될 싸움까지 달려듦</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q10" value="B" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">B.</div>
+              <div class="option-text body-text">계산적이란 소리 듣고 거리두기 당함</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q10" value="C" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">C.</div>
+              <div class="option-text body-text">생각만 하다가 실행이 늦음</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q10" value="D" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">D.</div>
+              <div class="option-text body-text">남 도와주느라 내 일은 밀림</div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Q11 -->
+      <div class="question-block hidden" data-step="11">
+        <div class="question-header">
+          <div class="question-label heading-serif">Q11. 되고 싶은 선배상은?</div>
+        </div>
+        <div class="options" data-question="q11">
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q11" value="A" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">A.</div>
+              <div class="option-text body-text">“위험하면 내가 앞장설게.”</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q11" value="B" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">B.</div>
+              <div class="option-text body-text">“내가 길 열어줄게. 뒤만 따라와.”</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q11" value="C" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">C.</div>
+              <div class="option-text body-text">“이건 이렇게 하면 더 효율적이야.”</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q11" value="D" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">D.</div>
+              <div class="option-text body-text">“힘들면 와. 난 항상 네 편이야.”</div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Q12 -->
+      <div class="question-block hidden" data-step="12">
+        <div class="question-header">
+          <div class="question-label heading-serif">Q12. 기숙사 방 구조를 바꾼다면?</div>
+        </div>
+        <div class="options" data-question="q12">
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q12" value="A" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">A.</div>
+              <div class="option-text body-text">활기차게 훈련/토론 가능한 구조</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q12" value="B" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">B.</div>
+              <div class="option-text body-text">내가 영향력 행사하기 좋은 구조</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q12" value="C" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">C.</div>
+              <div class="option-text body-text">집중·연구에 최적화된 동선</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q12" value="D" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">D.</div>
+              <div class="option-text body-text">모두 편하고 스트레스 적은 구조</div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Q13 -->
+      <div class="question-block hidden" data-step="13">
+        <div class="question-header">
+          <div class="question-label heading-serif">Q13. 정말 싫은 건?</div>
+        </div>
+        <div class="options" data-question="q13">
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q13" value="A" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">A.</div>
+              <div class="option-text body-text">비겁함</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q13" value="B" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">B.</div>
+              <div class="option-text body-text">아무 것도 못 하는 무력함</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q13" value="C" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">C.</div>
+              <div class="option-text body-text">무지 / 생각 없이 움직이는 것</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q13" value="D" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">D.</div>
+              <div class="option-text body-text">배신 / 약속 어기고 손 털기</div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Q14 -->
+      <div class="question-block hidden" data-step="14">
+        <div class="question-header">
+          <div class="question-label heading-serif">Q14. “성공했다”라고 느끼는 순간은?</div>
+        </div>
+        <div class="options" data-question="q14">
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q14" value="A" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">A.</div>
+              <div class="option-text body-text">믿는 가치를 지켜냈을 때</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q14" value="B" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">B.</div>
+              <div class="option-text body-text">원하는 자리/권한/결과를 손에 넣었을 때</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q14" value="C" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">C.</div>
+              <div class="option-text body-text">궁금했던 걸 이해하고 답을 찾았을 때</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q14" value="D" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">D.</div>
+              <div class="option-text body-text">나와 내 사람들이 안전하고 행복할 때</div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Q15 -->
+      <div class="question-block hidden" data-step="15">
+        <div class="question-header">
+          <div class="question-label heading-serif">Q15. 처음 보는 강력한 주문을 배웠다.</div>
+        </div>
+        <div class="options" data-question="q15">
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q15" value="A" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">A.</div>
+              <div class="option-text body-text">일단 써보면서 몸으로 익힌다.</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q15" value="B" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">B.</div>
+              <div class="option-text body-text">이걸 어디에 써먹어 강점 만들 수 있을까부터 본다.</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q15" value="C" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">C.</div>
+              <div class="option-text body-text">원리 이해 전엔 막 못 쓴다.</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q15" value="D" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">D.</div>
+              <div class="option-text body-text">혹시 다칠 사람 없는지부터 살핀다.</div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Q16 -->
+      <div class="question-block hidden" data-step="16">
+        <div class="question-header">
+          <div class="question-label heading-serif">Q16. 팀 안에 갈등이 터졌다.</div>
+        </div>
+        <div class="options" data-question="q16">
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q16" value="A" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">A.</div>
+              <div class="option-text body-text">빨리 터뜨리고 해결하자고 직설적으로 말한다.</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q16" value="B" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">B.</div>
+              <div class="option-text body-text">내 입지 안 나빠지게 세력 관리부터 한다.</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q16" value="C" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">C.</div>
+              <div class="option-text body-text">문제를 논리적으로 쪼개서 핵심을 정리해 준다.</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q16" value="D" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">D.</div>
+              <div class="option-text body-text">양쪽 말 전달해주고 감정 식히는 완충 역할을 한다.</div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Q17 -->
+      <div class="question-block hidden" data-step="17">
+        <div class="question-header">
+          <div class="question-label heading-serif">Q17. 아주 큰 비밀을 듣게 됐다.</div>
+        </div>
+        <div class="options" data-question="q17">
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q17" value="A" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">A.</div>
+              <div class="option-text body-text">위험해도 진실은 결국 밝혀져야 한다.</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q17" value="B" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">B.</div>
+              <div class="option-text body-text">비밀을 유리하게 쓸지 계산부터 한다.</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q17" value="C" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">C.</div>
+              <div class="option-text body-text">사실인지 근거 있는지 먼저 검증.</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q17" value="D" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">D.</div>
+              <div class="option-text body-text">상대가 안 다치도록 조용히 지켜준다.</div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Q18 -->
+      <div class="question-block hidden" data-step="18">
+        <div class="question-header">
+          <div class="question-label heading-serif">Q18. 이상적인 친구 타입은?</div>
+        </div>
+        <div class="options" data-question="q18">
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q18" value="A" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">A.</div>
+              <div class="option-text body-text">같이 싸워줄 용감한 친구</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q18" value="B" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">B.</div>
+              <div class="option-text body-text">서로 이득 만들어주는 야망 파트너</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q18" value="C" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">C.</div>
+              <div class="option-text body-text">깊은 대화/지적 자극이 되는 친구</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q18" value="D" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">D.</div>
+              <div class="option-text body-text">편하게 기대도 되는 따뜻한 친구</div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Q19 -->
+      <div class="question-block hidden" data-step="19">
+        <div class="question-header">
+          <div class="question-label heading-serif">Q19. 상상 속 너는 어떤 마법사?</div>
+        </div>
+        <div class="options" data-question="q19">
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q19" value="A" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">A.</div>
+              <div class="option-text body-text">전설의 영웅. 악을 무찌르는 보호자</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q19" value="B" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">B.</div>
+              <div class="option-text body-text">그림자에서 판을 움직이는 실력자</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q19" value="C" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">C.</div>
+              <div class="option-text body-text">마법 이론의 권위자, 모두가 결국 찾는 사람</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q19" value="D" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">D.</div>
+              <div class="option-text body-text">사람들이 의지하는 버팀목, 없어선 안 되는 존재</div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Q20 -->
+      <div class="question-block hidden" data-step="20">
+        <div class="question-header">
+          <div class="question-label heading-serif">Q20. 너답다고 느껴지는 문장은?</div>
+        </div>
+        <div class="options" data-question="q20">
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q20" value="A" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">A.</div>
+              <div class="option-text body-text">“옳다고 믿으면 나는 움직인다.”</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q20" value="B" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">B.</div>
+              <div class="option-text body-text">“원하는 건 반드시 손에 넣는다.”</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q20" value="C" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">C.</div>
+              <div class="option-text body-text">“알아야 통제할 수 있다.”</div>
+            </div>
+          </label>
+          <label class="option-row">
+            <input class="option-input" type="radio" name="q20" value="D" />
+            <div class="option-text-wrap">
+              <div class="option-key accent-text">D.</div>
+              <div class="option-text body-text">“함께 가야 진짜 이긴 거다.”</div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- 액션 영역 -->
+    <section class="card action-area">
+      <div class="warning" id="warningBox">
+        아직 답을 고르지 않은 문항이 있어요.
+      </div>
+
+      <!-- 네비게이션 버튼 -->
+      <div class="nav-buttons">
+        <button id="prevBtn" type="button" class="nav-button heading-serif">← 이전</button>
+        <button id="nextBtn" type="button" class="nav-button heading-serif">다음 →</button>
+        <button id="calcBtn" type="button" class="cta-button heading-serif hidden">결과 보기 🪄</button>
+      </div>
+
+      <!-- 결과 카드 -->
+      <div class="result-card" id="resultCard">
+        <div class="result-house heading-serif" id="resultHouse">기숙사 결과 영역</div>
+        <div class="result-scoreline body-dim" id="resultScores"></div>
+        <div class="result-desc-title heading-serif">당신의 성향</div>
+        <div class="result-desc-body body-text" id="resultDesc"></div>
+      </div>
+    </section>
+
+    <footer class="footer-note body-dim">
+      Hogwarts Sorting Quiz (fan-made). Harry Potter IP belongs to its respective rights holders.
+    </footer>
+  </main>
+
+  <script src="./index.js"></script>
+</body>
+
+</html>
